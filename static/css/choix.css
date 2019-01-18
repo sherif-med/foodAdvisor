@@ -1,0 +1,12 @@
+body {
+    padding-left: 15px;
+    text-align:center;
+    display:inline-block;
+}
+img{
+  width: 100px;
+  height: 100px;
+}
+span, #somme{
+  font-weight: bold;
+}

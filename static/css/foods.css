@@ -1,4 +1,4 @@
-.image{
+/*.image{
   width:75%;
   height:350px;
      object-position:50% 50%;
@@ -6,14 +6,32 @@
   color: 	#00C393;
   overflow: hidden;
 }
+*/
 body {
     padding-left: 15px;
+    background-image: url("https://foodvisor.io/static/img/home/background-homepage-1080.jpg");
+    background-size: cover;
+}
+.card-body{
+  background-image: linear-gradient(#00C393,#00C293);
 }
 
-.foods{
-    text-align:center;
-    display:inline-block;
+.foodcards{
+    text-align: center;
 }
-.foodelement{
-  float:left;
+.card{
+  display:inline-block;
+}
+.card-text{
+  text-align: left;
+}
+h1,h3,.boutons{
+  text-align: center;
+}
+h1{
+  color: #00C393;
+  border-radius: 10px;
+}
+li{
+  text-align: left;
 }

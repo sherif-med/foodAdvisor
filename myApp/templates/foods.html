@@ -1,7 +1,7 @@
 
 <head>
   {% load static %}
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
   <link rel="stylesheet" type="text/css" href="{% static 'css/theme.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/foods.css' %}">
@@ -16,26 +16,36 @@
 
 <h3> Starters </h3>
 
+<div class="foodcards">
 {% for food in foods %}
   {% if food.type == 'starter' %}
-    <div class="foodelement" id="f{{ forloop.counter }}">
-      <h3> {{ food.display_name }} </h3>
-      <div class="details">
-        <ul>
+    <div class="card" style="width: 18rem;" id="f{{ forloop.counter }}">
+      <img src="{{food.imgUrl}}" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title"> {{ food.display_name }} </h5>
+        <p>
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExamplef{{ forloop.counter }}" aria-expanded="false" aria-controls="collapseExample">
+            details
+          </button>
+        </p>
+        <div class="collapse" id="collapseExamplef{{ forloop.counter }}">
+          <div class="card card-body">
+        <p class="card-text">
           <li>calories: {{food.cal}}</li>
           <li>carbs: {{food.carbs}}</li>
           <li>carbs: {{food.carbs}}</li>
           <li>fibers: {{food.fibers}}</li>
           <li>proteins: {{food.proteins}}</li>
           <li>lipids: {{food.lipids}}</li>
-        </ul>
+        </p>
+        </div>
       </div>
-      <div class="image">
-        <img src="{{food.imgUrl}}">
       </div>
     </div>
   {% endif %}
 {% endfor %}
+</div>
+
 
 <div class="form-group">
   <select name='starter' class="form-control" id="exampleFormControlSelect1">
@@ -49,26 +59,35 @@
 
 
 <h3> Dishs </h3>
+<div class="foodcards">
 {% for food in foods %}
   {% if food.type == 'dish' %}
-<div class="foodelement" id="f{{ forloop.counter }}">
-  <h3> {{ food.display_name }} </h3>
-  <div class="details">
-    <ul>
+<div class="card" style="width: 18rem;" id="f{{ forloop.counter }}">
+  <img src="{{food.imgUrl}}" class="card-img-top">
+  <div class="card-body">
+  <h5 class="card-title"> {{ food.display_name }} </h5>
+  <p>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExamplef{{ forloop.counter }}" aria-expanded="false" aria-controls="collapseExample">
+      details
+    </button>
+  </p>
+  <div class="collapse" id="collapseExamplef{{ forloop.counter }}">
+    <div class="card card-body">
+    <p class="card-text">
       <li>calories: {{food.cal}}</li>
       <li>carbs: {{food.carbs}}</li>
       <li>carbs: {{food.carbs}}</li>
       <li>fibers: {{food.fibers}}</li>
       <li>proteins: {{food.proteins}}</li>
       <li>lipids: {{food.lipids}}</li>
-    </ul>
-  </div>
-  <div class="image">
-    <img src="{{food.imgUrl}}">
+    </p>
+    </div>
+    </div>
   </div>
 </div>
   {% endif %}
 {% endfor %}
+</div>
 
 <div class="form-group">
   <select name='dish' class="form-control" id="exampleFormControlSelect1">
@@ -81,27 +100,35 @@
 </div>
 
 <h3> Deserts </h3>
+<div class="foodcards">
 {% for food in foods %}
   {% if food.type == 'desert' %}
-<div class="foodelement" id="f{{ forloop.counter }}f">
-  <h3> {{ food.display_name }} </h3>
-  <div class="details">
-    <ul>
+<div class="card" style="width: 18rem;" id="f{{ forloop.counter }}f">
+  <img src="{{food.imgUrl}}" class="card-img-top">
+  <div class="card-body">
+  <h5 card-title> {{ food.display_name }} </h5>
+  <p>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExamplef{{ forloop.counter }}" aria-expanded="false" aria-controls="collapseExample">
+      details
+    </button>
+  </p>
+  <div class="collapse" id="collapseExamplef{{ forloop.counter }}">
+    <div class="card card-body">
+    <p class="card-text">
       <li>calories: {{food.cal}}</li>
       <li>carbs: {{food.carbs}}</li>
       <li>carbs: {{food.carbs}}</li>
       <li>fibers: {{food.fibers}}</li>
       <li>proteins: {{food.proteins}}</li>
       <li>lipids: {{food.lipids}}</li>
-    </ul>
+    </p>
   </div>
-  <div class="image">
-    <img src="{{food.imgUrl}}">
+  </div>
   </div>
 </div>
   {% endif %}
 {% endfor %}
-
+</div>
 <div class="form-group">
   <select name='desert' class="form-control" id="exampleFormControlSelect1">
     {% for food in foods %}
@@ -111,10 +138,14 @@
   {% endfor %}
   </select>
 </div>
-
-<button type="submit" class="btn btn-success">GET JSON</button>
-<input class="btn btn-success" type="submit" value="GET page" onclick="javascript: form.action='/interface/';"/>
+<div class="boutons">
+  <button type="submit" class="btn btn-success">GET JSON</button>
+  <input class="btn btn-success" type="submit" value="GET page" onclick="javascript: form.action='/interface/';"/>
+</div>
 </form>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </body>
