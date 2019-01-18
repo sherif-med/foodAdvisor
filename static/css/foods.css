@@ -1,0 +1,19 @@
+.image{
+  width:75%;
+  height:350px;
+     object-position:50% 50%;
+  border: 2px solid;
+  color: 	#00C393;
+  overflow: hidden;
+}
+body {
+    padding-left: 15px;
+}
+
+.foods{
+    text-align:center;
+    display:inline-block;
+}
+.foodelement{
+  float:left;
+}

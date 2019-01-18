@@ -1,0 +1,120 @@
+
+<head>
+  {% load static %}
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/theme.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/foods.css' %}">
+</head>
+<body>
+
+<h1>Repas</h1>
+<div class="foods">
+
+<form class="" action="/api/meal_planner/" method="post" enctype='multipart/form-data'>
+{% csrf_token %}
+
+<h3> Starters </h3>
+
+{% for food in foods %}
+  {% if food.type == 'starter' %}
+    <div class="foodelement" id="f{{ forloop.counter }}">
+      <h3> {{ food.display_name }} </h3>
+      <div class="details">
+        <ul>
+          <li>calories: {{food.cal}}</li>
+          <li>carbs: {{food.carbs}}</li>
+          <li>carbs: {{food.carbs}}</li>
+          <li>fibers: {{food.fibers}}</li>
+          <li>proteins: {{food.proteins}}</li>
+          <li>lipids: {{food.lipids}}</li>
+        </ul>
+      </div>
+      <div class="image">
+        <img src="{{food.imgUrl}}">
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
+
+<div class="form-group">
+  <select name='starter' class="form-control" id="exampleFormControlSelect1">
+    {% for food in foods %}
+      {% if food.type == 'starter' %}
+    <option value='{"display_name":"{{food.display_name}}","cal":{{food.cal}}}'>{{ food.display_name }} </option>
+    {% endif %}
+  {% endfor %}
+  </select>
+</div>
+
+
+<h3> Dishs </h3>
+{% for food in foods %}
+  {% if food.type == 'dish' %}
+<div class="foodelement" id="f{{ forloop.counter }}">
+  <h3> {{ food.display_name }} </h3>
+  <div class="details">
+    <ul>
+      <li>calories: {{food.cal}}</li>
+      <li>carbs: {{food.carbs}}</li>
+      <li>carbs: {{food.carbs}}</li>
+      <li>fibers: {{food.fibers}}</li>
+      <li>proteins: {{food.proteins}}</li>
+      <li>lipids: {{food.lipids}}</li>
+    </ul>
+  </div>
+  <div class="image">
+    <img src="{{food.imgUrl}}">
+  </div>
+</div>
+  {% endif %}
+{% endfor %}
+
+<div class="form-group">
+  <select name='dish' class="form-control" id="exampleFormControlSelect1">
+    {% for food in foods %}
+      {% if food.type == 'dish' %}
+    <option value='{"display_name":"{{food.display_name}}","cal":{{food.cal}}}'>{{ food.display_name }} </option>
+    {% endif %}
+  {% endfor %}
+  </select>
+</div>
+
+<h3> Deserts </h3>
+{% for food in foods %}
+  {% if food.type == 'desert' %}
+<div class="foodelement" id="f{{ forloop.counter }}f">
+  <h3> {{ food.display_name }} </h3>
+  <div class="details">
+    <ul>
+      <li>calories: {{food.cal}}</li>
+      <li>carbs: {{food.carbs}}</li>
+      <li>carbs: {{food.carbs}}</li>
+      <li>fibers: {{food.fibers}}</li>
+      <li>proteins: {{food.proteins}}</li>
+      <li>lipids: {{food.lipids}}</li>
+    </ul>
+  </div>
+  <div class="image">
+    <img src="{{food.imgUrl}}">
+  </div>
+</div>
+  {% endif %}
+{% endfor %}
+
+<div class="form-group">
+  <select name='desert' class="form-control" id="exampleFormControlSelect1">
+    {% for food in foods %}
+      {% if food.type == 'desert' %}
+    <option value='{"display_name":"{{food.display_name}}","cal":{{food.cal}}}'>{{ food.display_name }} </option>
+    {% endif %}
+  {% endfor %}
+  </select>
+</div>
+
+<button type="submit" class="btn btn-success">GET JSON</button>
+<input class="btn btn-success" type="submit" value="GET page" onclick="javascript: form.action='/interface/';"/>
+</form>
+</div>
+
+</body>

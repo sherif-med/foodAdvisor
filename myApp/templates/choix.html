@@ -1,0 +1,27 @@
+
+<head>
+  {% load static %}
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/theme.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/choix.css' %}">
+</head>
+<h1>Votre choix</h1>
+<div>
+  <div class="sign">
+    {% if status == 'OK' %}
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg">
+    {% endif %}
+    {% if status == 'KO' %}
+    <img src="http://clipart-library.com/img/1718414.png">
+    {% endif %}
+
+    <div class="result">
+      <h2>votre choix est :</h2>
+      <h3> Starter : {{food.starter.display_name}} <span>({{food.starter.cal}})</span></h3>
+      <h3> Dish : {{food.dish.display_name}} <span>({{food.dish.cal}})</span></h3>
+      <h3> Desert : {{food.desert.display_name}} <span>({{food.desert.cal}})</span></h3>
+      <h4> ({{food.starter.cal}} + {{food.dish.cal}} +{{food.desert.cal}} = {{somme}})</h4>
+    </div>
+  </div>
+</div>
