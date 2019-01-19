@@ -9,6 +9,11 @@ from django.core import serializers
 from django.conf import settings
 import json
 import requests
+from myApp.models import food
+
+def objTofood(donnee,sum):
+    return food(starter_name=donnee["starter"]["display_name"],dish_name=donnee["dish"]["display_name"],desert_name=donnee["desert"]["display_name"]
+    ,starter_calories=donnee["starter"]["cal"],dish_calories=donnee["dish"]["cal"],desert_calories=donnee["desert"]["cal"],sum_calories=sum)
 
 # Create your views here.
 
@@ -37,6 +42,7 @@ def FoodResponse(foodData):
         donnee = {"starter":starter, "dish":dish, "desert":desert}
         #print(donnee)
         calSum= calSum + starter["cal"]+ dish["cal"]+ desert["cal"]
+        objTofood(donnee,calSum).save()
         if ( (calSum < calMoy*(1-percentage)) or (calSum > calMoy*(1+percentage)) ):
             return JsonResponse({
             "status": "KO",
@@ -67,6 +73,7 @@ def interface(foodData):
         donnee = {"starter":starter, "dish":dish, "desert":desert}
         #print(donnee)
         calSum= calSum + starter["cal"]+ dish["cal"]+ desert["cal"]
+        objTofood(donnee,calSum).save()
         if ( (calSum < calMoy*(1-percentage)) or (calSum > calMoy*(1+percentage)) ):
             return render(foodData,"choix.html", {
             "status": "KO",

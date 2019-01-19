@@ -76,11 +76,17 @@ WSGI_APPLICATION = 'foodAdvisor.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
+# elephantsql mail = 7942d28840@mailox.fun
+# elephantsql pass = Q25btfPvidrdMvu
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'yhrvqbqa',
+        'USER': 'yhrvqbqa',
+        'PASSWORD':'i_kQq1maG2ZKTeO1oKosJmFFMneOxZCn',
+        'HOST':'dumbo.db.elephantsql.com',
+        'PORT':'5432'
     }
 }
 
